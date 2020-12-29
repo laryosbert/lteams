@@ -20,7 +20,7 @@ export const ThrottleHook = () => {
         }
     }, [])
 
-    console.log(winSize)
+    console.log(winSize);
 
     return <span>wdith:{winSize.width};height:{winSize.height};</span>
 }
