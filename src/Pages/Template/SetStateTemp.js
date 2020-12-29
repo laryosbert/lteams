@@ -58,7 +58,6 @@ export default class SetStateTemp extends React.PureComponent {
         console.log(this.state.stateName);         
         this.setState({ stateName: "await3" });
         console.log(this.state.stateName);
-
     }
 
     render() {
