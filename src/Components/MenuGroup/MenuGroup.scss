@@ -1,0 +1,37 @@
+@import '../../Theme/theme.scss';
+
+.menu-group {
+    position: relative;
+
+    img {
+        height: 24px;
+        width: 24px;
+    }
+
+    &:hover {
+        color: $buttonBlue;
+        background-color: $buttonBG;
+    }
+
+    &-button {
+
+        text-decoration: none;
+        padding: 0 4px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+    }
+
+    &-pop {
+        background: $panelBG;
+        position: absolute;        
+        white-space: nowrap;
+        margin-top: 4px;
+
+    }
+
+    .hide {
+        display: none;
+    }
+}

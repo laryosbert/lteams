@@ -1,0 +1,14 @@
+#root {
+    .header-top {
+        height: 64px;
+        display: flex;
+        align-content: space-between;
+        align-items: center;
+        nav{
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+            height: 100%;
+        }
+    }
+}
