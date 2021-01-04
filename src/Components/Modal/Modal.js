@@ -1,8 +1,8 @@
 import { createPortal } from 'react-dom';
 import { getPrefixCls } from '../../Util/themeHelper';
-import './LModal.scss';
+import './Modal.scss';
 
-export const LModal = props => {
+export const Modal = props => {
     const { children, visible, onClose, header } = props;
 
     const classPre = `${getPrefixCls()}-modal`;
