@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { getPrefixCls } from '../../Util/themeHelper';
 import classNames from 'classnames';
 import './MenuGroup.scss';
 
@@ -23,17 +24,26 @@ export const MenuGroup = (props) => {
         return () => {
             window.removeEventListener("mouseup", handleClosePop);
         }
-    })
+    });
+
+    const classPre = `${getPrefixCls()}-menugroup`;
 
     return (
-        <div className={classNames("menu-group", { "menu-group-selected": selected })}>
-            <a ref={menuRef} className="menu-group-button" onClick={handleDropMenuClick}>
+        <div className={classNames(`${classPre}`, { [`${classPre}-selected`]: selected })}>
+            <a ref={menuRef} className={`${classPre}-button`} onClick={handleDropMenuClick}>
                 <span>{props.title}</span>
                 <img src={logoSvg}></img>
             </a>
-            <div className={classNames("menu-group-pop", { "hide": !selected })}>
+            <div className={classNames(`${classPre}-pop`, { "hide": !selected })}>
                 {props.children}
             </div>
         </div>
+    )
+}
+
+export const MenuGroupTitle = (props) => {
+    const classPre = `${getPrefixCls()}-menugroup`;
+    return (
+        <div className={`${classPre}-title`}>{props.children}</div>
     )
 }

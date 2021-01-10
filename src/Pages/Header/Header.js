@@ -1,16 +1,30 @@
-
-import React, { useState, useEffect } from 'react';
-import { Route, withRouter } from "react-router";
+import React, { useState, useEffect, useCallback } from 'react';
+import { Route, withRouter, useLocation } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
-import { Menu, MenuGroup } from '../../Components';
+import { Menu, MenuGroup, MenuGroupTitle, HNavItem } from '../../Components';
 import { initProject } from '../../Redux/Project/aciton';
 import { NewProject } from '../index';
 import './Header.scss';
 
 const Header = props => {
     const [createProject, setCreateProject] = useState(false);
+    const dispatch = useDispatch();
+    const location = useLocation();
 
-    const dispatch = useDispatch()
+    const getFirstPath = useCallback((location) => {
+        if (!location || !location.pathname)
+            return "";
+        const path = location.pathname.toLowerCase();
+        const firstSplit = path.replace(/^\//, "").indexOf("/");
+        if (firstSplit > 1)
+            return path.substring(1, firstSplit + 1);
+        else
+            return path.replace(/^\//, "");
+    });
+
+    const firstPath = getFirstPath(location);
+
+
     useEffect(() => {
         dispatch(initProject());
     }, []);
@@ -22,16 +36,25 @@ const Header = props => {
     return (
         <header className="header-top">
             <nav>
-                <Menu to="/MyWork">My Work</Menu>
-                <MenuGroup title="Project">
-                    <Menu to="" onClick={() => { setCreateProject(true) }}>Create Project</Menu>
-                    {createProject && <NewProject></NewProject>}
-                    {
-                        projects && projects.map(project => {
-                            return <Menu to={`/project/${project.id}`}>{project.projectname}</Menu>
-                        })
-                    } 
-                </MenuGroup>
+                <HNavItem selected={firstPath === "mywork"}>
+                    <Menu to="/MyWork" type="top">My Work</Menu>
+                </HNavItem>
+                <HNavItem selected={firstPath === "project"}>
+                    <MenuGroup title="Project">
+                        <MenuGroupTitle>Recent</MenuGroupTitle>
+                        {createProject && <NewProject></NewProject>}
+                        {
+                            projects && projects.map((project, index) => {
+                                return <Menu key={project.id}
+                                    to={`/project/${project.id}`}
+                                >{project.projectname}</Menu>
+                            })
+                        }
+                        <Menu.Divider></Menu.Divider>
+                        <Menu to="/project/all">View All Project</Menu>
+                        <Menu to="" onClick={() => { setCreateProject(true) }}>Create Project</Menu>
+                    </MenuGroup>
+                </HNavItem>
             </nav>
             <div>
                 Profile Menu

@@ -1,0 +1,23 @@
+@import '../../Theme/theme.scss';
+
+.#{$precls}-hnav {
+    &-item {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    &-item-selected {
+        position: relative;
+        &::after{
+            content:"";
+            position: absolute;
+            bottom: 0;
+            background-color: $selected;
+            height: 3px;
+            left: 4px;
+            right: 4px;
+            z-index: 100;
+        }
+    }
+}

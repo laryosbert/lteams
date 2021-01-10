@@ -1,7 +1,9 @@
 @import '../../Theme/theme.scss';
 
-.menu-group {
+.#{$precls}-menugroup {
     position: relative;
+    padding: 8px 20px;
+    cursor: pointer;
 
     img {
         height: 24px;
@@ -9,8 +11,15 @@
     }
 
     &:hover {
-        color: $buttonBlue;
+        color: $buttonColor;
         background-color: $buttonBG;
+    }
+
+    &-title{
+        font-size: 11px;
+        color: $txtColor;
+        font-weight: 700;
+        padding: 14px 20px 6px 20px;
     }
 
     &-button {
@@ -24,11 +33,14 @@
     }
 
     &-pop {
-        background: $panelBG;
+        min-width: 320px;
+        background: $popBG;
+        border-radius: 3px;
         position: absolute;        
         white-space: nowrap;
         margin-top: 4px;
-
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+        z-index: 1000;
     }
 
     .hide {

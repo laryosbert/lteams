@@ -1,14 +1,42 @@
-
 @import '../../Theme/theme.scss';
 
-.menu-item {
-    height: 32px;
-    text-decoration: none;
-    padding: 0 4px;
-    
+.#{$precls}-menu {
+
+
+    &-item {
+        min-height: 24px;
+        padding: 8px 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            background-color: $hoverBG;
+            text-decoration: none;
+        }
+
+        &-top {
+            &:hover {
+                background-color: $buttonBG;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    &-link {
+        text-decoration: none;
+        color: $txtColor;
+    }
+
+    &-divider {
+        display: block;
+        height: 2px;
+        background: $dividerBG;
+    }
 
     &:hover {
-        color: $buttonBlue;
+        color: $buttonColor;
         background-color: $buttonBG;
     }
 }
