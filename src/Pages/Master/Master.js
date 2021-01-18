@@ -4,14 +4,15 @@ import {
     Switch
 } from "react-router-dom";
 import { Header, LeftNav } from '../../Pages';
+import './Master.scss';
 
 const Master = (props) => {
     return (
-        <div>
+        <div className="lt-master">
             <Header></Header>
-            <div>
-                <Route path="/project"><LeftNav></LeftNav></Route>
-                <div>{props.children}</div>
+            <div className="lt-main">
+                <Route path="/project/:projectid"><LeftNav></LeftNav></Route>
+                <div className="lt-content">{props.children}</div>
             </div>
         </div>)
 }

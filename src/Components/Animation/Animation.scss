@@ -1,0 +1,33 @@
+@keyframes inleft {
+    from {
+        opacity: 0;
+        width: 0;
+    }
+
+    to {
+        opacity: 1;
+        width: 240px;
+    }
+}
+
+@keyframes outleft {
+    from {
+        opacity: 1;
+        width: 240px;
+    }
+
+    to {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+.animate-inleft
+{
+    animation: 300ms inleft;
+}
+
+.animate-outleft
+{
+    animation: 300ms outleft;
+}

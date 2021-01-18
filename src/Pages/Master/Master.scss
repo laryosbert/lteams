@@ -1,0 +1,15 @@
+.lt {
+    &-master {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-main {
+        display: flex;
+        flex-grow: 1;
+    }
+    &-content{
+        flex-grow: 1;
+    }
+}

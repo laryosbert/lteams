@@ -1,0 +1,29 @@
+@import '../../Theme/theme.scss';
+
+.nav-left {
+
+    display: flex;
+    flex-direction: row;
+    background-color: $navBG;
+
+    &-expand {
+        width: 240px;
+    }
+
+    &-shrink {
+        width: 16px;
+        overflow: hidden;
+    }
+
+    &-main {
+        flex-grow: 1;
+    }
+
+    &-head {
+        margin-top: 16px;
+    }
+
+    &-menus {
+        padding: 8px 16px;
+    }
+}

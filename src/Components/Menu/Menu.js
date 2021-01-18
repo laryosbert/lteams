@@ -7,11 +7,12 @@ const Menu = props => {
     const classPre = `${getPrefixCls()}-menu`;
     const menuClassName = classNames([`${classPre}-item`], { [`${classPre}-item-top`]: props.type === "top" });
     return (
-        <div className={menuClassName}>
-            <Link to={props.to} className={`${classPre}-link`}
-                onClick={props.onClick}>{props.children}
-            </Link>
-        </div>
+        <Link to={props.to} className={`${classPre}-link`}
+            onClick={props.onClick}>
+            <div className={menuClassName}>
+                {props.children}
+            </div>
+        </Link>
     )
 }
 

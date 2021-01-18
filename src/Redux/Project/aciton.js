@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { RECEIVE_PROJECT, CREATE_PROJECT_START, CREATE_PROJECT_SUCCESS, CREATE_PROJECT_ERROR } from './actionTypes';
+import {
+    RECEIVE_PROJECT,
+    SHOW_CREATE_MODAL,
+    HIDE_CREATE_MODAL,
+    CREATE_PROJECT_START,
+    CREATE_PROJECT_SUCCESS,
+    CREATE_PROJECT_ERROR
+} from './actionTypes';
 
 export const getProjects = (projects) => ({
     type: RECEIVE_PROJECT,
@@ -14,7 +21,13 @@ export const initProject = () => dispatch => (
         })
 );
 
+export const showCreateModal = () => dispatch => {
+    dispatch({ type: SHOW_CREATE_MODAL });
+}
 
+export const hideCreateModal = () => dispatch => {
+    dispatch({ type: HIDE_CREATE_MODAL });
+}
 
 export const createProject = (projectname, history) => async dispatch => {
     dispatch({ type: CREATE_PROJECT_START });
@@ -25,8 +38,8 @@ export const createProject = (projectname, history) => async dispatch => {
         dispatch({
             type: CREATE_PROJECT_SUCCESS,
             projects: [{ id: results.data, projectname }]
-        });       
-        history.push(`/proejcts/${results.data}`);
+        });
+        history.push(`/project/${results.data}`);
     }
     catch (error) {
         dispatch({

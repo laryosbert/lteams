@@ -1,0 +1,27 @@
+@import '../../Theme/theme.scss';
+
+.#{$precls}-navhd {
+    display: flex;
+    padding: 8px 16px;
+
+    &-icon {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+    }
+
+    &-img {
+        height: 24px;
+        width: 24px;
+    }
+
+    &-title {
+        h2 {
+            font-size: 14px;
+        }
+
+        span {
+            font-size: 12px;
+        }
+    }
+}

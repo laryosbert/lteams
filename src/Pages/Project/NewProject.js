@@ -1,27 +1,28 @@
-import { useState, useRef, useCallback } from 'react';
 import { withRouter, useHistory } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../Components';
 import { useInputHook } from '../../Hooks';
 
-import { createProject } from '../../Redux/Project/aciton';
+import { createProject, hideCreateModal } from '../../Redux/Project/aciton';
 
 const NewProject = (props) => {
-    // const refProjectName = useRef(null);
     const inpHook = useInputHook("");
-    const [newProject, setNewProject] = useState(true);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const closeCallback = useCallback(() => {
-        setNewProject(false);
-    })
+    const showModal = useSelector(state => {
+        return state.projects.showModal;
+    });
 
     const handleSubmit = () => {
         dispatch(createProject(inpHook.value, history));
     }
 
-    return (<Modal visible={newProject} onClose={closeCallback} header="Create New Project">
+    const handleClose = () => {
+        dispatch(hideCreateModal());
+    }
+
+    return (<Modal visible={!!showModal} onClose={handleClose} header="Create New Project">
         <div>Create new project form</div>
         <div>
             <span>Project Name:</span>
